@@ -2,6 +2,7 @@
 <html lang="de" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anna & Raphael · Hochzeit in Bad Ischl · 3. April 2027</title>
   
@@ -35,6 +36,7 @@
               dark: '#3E0C17'
             },
             charcoal: '#2D2829',
+            invite: '#C9D8EA',
             goldleaf: '#C5A880'
           },
           fontFamily: {
@@ -102,6 +104,16 @@
       border: 1px solid rgba(169, 196, 221, 0.4);
     }
     
+    /* Doppelter Rahmen wie auf der Papiereinladung */
+    .invite-frame {
+      border: 1px solid #C9D8EA;
+      outline: 1px solid #C9D8EA;
+      outline-offset: -7px;
+    }
+    @media (min-width: 640px) {
+      .invite-frame { outline-offset: -9px; }
+    }
+
     /* Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
@@ -126,7 +138,7 @@
   <header class="fixed top-0 left-0 right-0 z-40 bg-[#F7F3EC]/90 backdrop-blur-md border-b border-burgundy/10 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-5 py-3.5 flex items-center justify-between">
       <a href="#" class="flex items-center gap-2 group">
-        <span class="font-script text-3xl md:text-4xl text-burgundy font-normal group-hover:scale-105 transition-transform duration-300">A & R</span>
+        <span class="font-script text-4xl md:text-5xl text-burgundy font-normal leading-none tracking-tight group-hover:scale-105 transition-transform duration-300">AR</span>
         <span class="text-xs uppercase tracking-widest text-burgundy/60 font-sans hidden sm:inline-block">· Bad Ischl 2027</span>
       </a>
 
@@ -148,97 +160,43 @@
   </header>
 
   <!-- ========================================== -->
-  <!-- 1. HERO SEKTION -->
+  <!-- 1. HERO SEKTION (wie die Papiereinladung) -->
   <!-- ========================================== -->
-  <section class="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden bg-ivory">
-    
-    <!-- Sanfte Hintergrund-Drapierung / Farbverläufe -->
-    <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-dustyblue/25 blur-3xl pointer-events-none"></div>
-    <div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-dustyblue/20 blur-3xl pointer-events-none"></div>
+  <section class="relative bg-burgundy pt-24 pb-10 px-4 sm:px-6">
+    <div class="invite-frame relative max-w-xl mx-auto min-h-[calc(100vh-8.5rem)] flex flex-col items-center justify-between text-center px-6 py-10 sm:py-14">
 
-    <!-- Schwebende Babyblaue Seidenschleife (SVG Illustration) -->
-    <div class="absolute top-28 right-6 md:right-24 w-28 md:w-36 opacity-85 pointer-events-none animate-float-ribbon z-10">
-      <svg viewBox="0 0 160 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M78 45C65 20 20 18 20 48C20 72 65 70 80 50C95 70 140 72 140 48C140 18 95 20 82 45" stroke="#A9C4DD" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="rgba(169, 196, 221, 0.18)"/>
-        <path d="M75 52C60 75 40 100 25 125M85 52C100 75 120 100 135 125" stroke="#A9C4DD" stroke-width="6" stroke-linecap="round"/>
-        <circle cx="80" cy="49" r="6.5" fill="#5A1424"/>
-      </svg>
-    </div>
-
-    <!-- Zweite Schleife unten links -->
-    <div class="absolute bottom-16 left-6 md:left-20 w-24 md:w-32 opacity-75 pointer-events-none animate-float-ribbon" style="animation-delay: -3s;">
-      <svg viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M70 40C58 18 18 16 18 42C18 64 58 62 70 44C82 62 122 64 122 42C122 16 82 18 70 40Z" fill="rgba(235, 242, 247, 0.6)" stroke="#9BB5CE" stroke-width="4"/>
-        <path d="M66 45C52 68 34 90 20 110M74 45C88 68 106 90 120 110" stroke="#9BB5CE" stroke-width="4" stroke-linecap="round"/>
-      </svg>
-    </div>
-
-    <div class="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center">
-      
-      <!-- Seidiges Stoff-Banner Tagline -->
-      <div class="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-dustyblue/20 border border-dustyblue/40 text-burgundy text-xs uppercase tracking-[0.25em] mb-8 shadow-sm">
-        <span class="w-2 h-2 rounded-full bg-burgundy"></span>
-        Wir sagen Ja
-        <span class="w-2 h-2 rounded-full bg-burgundy"></span>
-      </div>
-
-      <!-- Wachssiegel mit Monogramm A & R -->
-      <div class="relative mb-6 wax-seal-shadow transition-transform duration-500 hover:scale-105 cursor-default">
-        <svg class="w-36 h-36 md:w-44 md:h-44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Unregelmäßiger Wachsrand -->
-          <path d="M50 4C65 3 73 11 82 18C91 25 97 34 96 46C95 58 90 67 84 76C78 85 69 93 56 95C43 97 34 93 24 86C14 79 5 72 4 58C3 44 9 34 16 23C23 12 35 5 50 4Z" fill="#5A1424"/>
-          <!-- Innerer erhabener Ring -->
-          <circle cx="50" cy="50" r="38" stroke="#3E0C17" stroke-width="1.8" opacity="0.6"/>
-          <circle cx="50" cy="50" r="35.5" stroke="#C5A880" stroke-width="0.8" stroke-dasharray="2 2" opacity="0.8"/>
-          <!-- Geprägtes Monogramm A & R in Kalligrafie -->
-          <text x="50" y="56" font-family="'Pinyon Script', cursive" font-size="22" fill="#F7F3EC" text-anchor="middle" font-weight="normal">A & R</text>
-        </svg>
-      </div>
-
-      <!-- Namen des Paares -->
-      <h1 class="text-4xl sm:text-6xl md:text-7xl font-serif font-light text-burgundy tracking-tight mb-2 leading-none">
-        Anna <span class="font-script text-3xl sm:text-4xl text-dustyblue-deep px-1">&</span> Raphael
-      </h1>
-
-      <p class="font-serif italic text-lg sm:text-xl text-charcoal/70 mb-6">
-        Samstag, 3. April 2027 · Bad Ischl, Salzkammergut
+      <!-- Einladungstext -->
+      <p class="font-serif uppercase text-invite/90 text-sm sm:text-base tracking-[0.12em] leading-relaxed">
+        Wir laden euch<br>zu unserer Hochzeit ein
       </p>
 
-      <div class="w-16 h-px bg-burgundy/30 mb-8"></div>
+      <!-- Namen -->
+      <h1 class="font-script text-invite font-normal my-10 sm:my-14 leading-[0.85] -rotate-[8deg]">
+        <span class="block text-[4.5rem] sm:text-[6.5rem] -translate-x-6 sm:-translate-x-10">Anna &amp;</span>
+        <span class="block text-[4.5rem] sm:text-[6.5rem] translate-x-2 sm:translate-x-4">Raphael</span>
+      </h1>
 
-      <!-- Countdown bis zur Trauung (03.04.2027 um 14:00 Uhr) -->
-      <div class="mb-10 w-full max-w-md">
-        <p class="text-[11px] uppercase tracking-[0.2em] text-burgundy/80 font-medium mb-3">Countdown zu unserem Tag</p>
-        <div class="grid grid-cols-4 gap-2 sm:gap-4 text-center">
-          <div class="bg-white/80 backdrop-blur-sm border border-dustyblue/40 rounded-2xl p-2.5 sm:p-3 shadow-sm">
-            <span id="cd-days" class="block font-serif text-2xl sm:text-3xl text-burgundy font-light">--</span>
-            <span class="text-[10px] uppercase tracking-wider text-charcoal/60">Tage</span>
-          </div>
-          <div class="bg-white/80 backdrop-blur-sm border border-dustyblue/40 rounded-2xl p-2.5 sm:p-3 shadow-sm">
-            <span id="cd-hours" class="block font-serif text-2xl sm:text-3xl text-burgundy font-light">--</span>
-            <span class="text-[10px] uppercase tracking-wider text-charcoal/60">Std</span>
-          </div>
-          <div class="bg-white/80 backdrop-blur-sm border border-dustyblue/40 rounded-2xl p-2.5 sm:p-3 shadow-sm">
-            <span id="cd-mins" class="block font-serif text-2xl sm:text-3xl text-burgundy font-light">--</span>
-            <span class="text-[10px] uppercase tracking-wider text-charcoal/60">Min</span>
-          </div>
-          <div class="bg-white/80 backdrop-blur-sm border border-dustyblue/40 rounded-2xl p-2.5 sm:p-3 shadow-sm">
-            <span id="cd-secs" class="block font-serif text-2xl sm:text-3xl text-burgundy font-light">--</span>
-            <span class="text-[10px] uppercase tracking-wider text-charcoal/60">Sek</span>
-          </div>
-        </div>
+      <!-- Datum & Ort -->
+      <div class="flex flex-col items-center gap-2">
+        <p class="font-serif uppercase text-invite/90 text-sm sm:text-base tracking-[0.12em]">
+          Am <span class="font-script normal-case text-2xl sm:text-3xl tracking-normal align-middle ml-1">3. April 2027</span>
+        </p>
+        <p class="font-serif uppercase text-invite/90 text-sm sm:text-base tracking-[0.12em]">in der Kaiservilla Bad Ischl</p>
+      </div>
+
+      <!-- Countdown (dezent) -->
+      <div class="mt-10 flex items-center justify-center gap-5 sm:gap-8 font-serif text-invite/85">
+        <div><span id="cd-days" class="block text-2xl sm:text-3xl font-light">--</span><span class="text-[10px] uppercase tracking-[0.2em] text-invite/60">Tage</span></div>
+        <div><span id="cd-hours" class="block text-2xl sm:text-3xl font-light">--</span><span class="text-[10px] uppercase tracking-[0.2em] text-invite/60">Std</span></div>
+        <div><span id="cd-mins" class="block text-2xl sm:text-3xl font-light">--</span><span class="text-[10px] uppercase tracking-[0.2em] text-invite/60">Min</span></div>
+        <div><span id="cd-secs" class="block text-2xl sm:text-3xl font-light">--</span><span class="text-[10px] uppercase tracking-[0.2em] text-invite/60">Sek</span></div>
       </div>
 
       <!-- Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-        <a href="#rsvp" class="bg-burgundy text-ivory px-8 py-3.5 rounded-full text-xs uppercase tracking-widest font-medium hover:bg-burgundy-light transition-all shadow-md text-center">
-          Direkt zur Zusage
-        </a>
-        <a href="#ablauf" class="bg-white/90 text-charcoal border border-dustyblue/60 px-7 py-3.5 rounded-full text-xs uppercase tracking-widest font-medium hover:bg-dustyblue-light transition-all text-center">
-          Tagesablauf ansehen
-        </a>
+      <div class="mt-10 flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+        <a href="#rsvp" class="bg-invite text-burgundy px-8 py-3 rounded-full text-xs uppercase tracking-widest font-medium hover:bg-white transition-all text-center">Zur Zusage</a>
+        <a href="#ablauf" class="border border-invite/60 text-invite px-8 py-3 rounded-full text-xs uppercase tracking-widest font-medium hover:bg-invite/10 transition-all text-center">Ablauf ansehen</a>
       </div>
-
     </div>
   </section>
 
@@ -779,8 +737,8 @@
           <div class="faq-content hidden px-5 pb-5 pt-0 text-xs text-charcoal/80 leading-relaxed border-t border-dustyblue/10">
             Super! Bitte sprecht euch vorher mit unseren Trauzeugen ab:
             <div class="mt-3 p-3 bg-ivory/70 rounded-xl space-y-1">
-              <p><strong class="text-burgundy">Trauzeugin [Name]:</strong> [E-Mail / Telefonnummer]</p>
-              <p><strong class="text-burgundy">Trauzeuge [Name]:</strong> [E-Mail / Telefonnummer]</p>
+              <p><strong class="text-burgundy">Trauzeugin Sara Rashid Taghipour:</strong> <a href="tel:+4369915077781" class="hover:text-burgundy underline underline-offset-4">+43 699 15077781</a></p>
+              <p><strong class="text-burgundy">Trauzeuge Ludwig Mayer:</strong> <a href="tel:+436642142844" class="hover:text-burgundy underline underline-offset-4">+43 664 2142844</a></p>
             </div>
           </div>
         </div>
@@ -796,9 +754,6 @@
   <footer class="py-16 px-4 bg-burgundy text-ivory relative overflow-hidden text-center">
     
     <div class="relative z-10 max-w-xl mx-auto flex flex-col items-center">
-      
-      <!-- Monogramm -->
-      <span class="font-script text-5xl sm:text-6xl text-dustyblue mb-2">A & R</span>
       
       <p class="font-serif italic text-lg sm:text-xl text-ivory/90 mb-4 font-light">
         Wir freuen uns auf euch!
