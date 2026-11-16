@@ -630,9 +630,28 @@
             <input type="text" id="kids" name="kids" placeholder="Anzahl" class="w-full px-4 py-3 rounded-xl border border-dustyblue/50 focus:border-burgundy focus:outline-none text-xs bg-ivory/30">
           </div>
 
-          <!-- Nachricht, Musikwünsche, Unverträglichkeiten -->
+          <!-- Essens-Präferenz -->
           <div>
-            <label for="message" class="block text-xs uppercase tracking-wider text-charcoal/80 font-medium mb-1.5">Musikwünsche, Unverträglichkeiten, Nachricht an uns</label>
+            <label class="block text-xs uppercase tracking-wider text-charcoal/80 font-medium mb-1.5">Essens-Präferenz <span class="normal-case tracking-normal text-charcoal/45">(Mehrfachauswahl möglich)</span></label>
+            <div class="grid grid-cols-3 gap-2">
+              <label class="flex items-center justify-center gap-2 p-3 rounded-xl border border-dustyblue/50 cursor-pointer hover:bg-dustyblue/10 transition-colors has-[:checked]:border-burgundy has-[:checked]:bg-burgundy/5">
+                <input type="checkbox" name="diet" value="Fleisch" class="w-4 h-4 accent-burgundy">
+                <span class="text-xs font-medium text-charcoal">Fleisch</span>
+              </label>
+              <label class="flex items-center justify-center gap-2 p-3 rounded-xl border border-dustyblue/50 cursor-pointer hover:bg-dustyblue/10 transition-colors has-[:checked]:border-burgundy has-[:checked]:bg-burgundy/5">
+                <input type="checkbox" name="diet" value="Fisch" class="w-4 h-4 accent-burgundy">
+                <span class="text-xs font-medium text-charcoal">Fisch</span>
+              </label>
+              <label class="flex items-center justify-center gap-2 p-3 rounded-xl border border-dustyblue/50 cursor-pointer hover:bg-dustyblue/10 transition-colors has-[:checked]:border-burgundy has-[:checked]:bg-burgundy/5">
+                <input type="checkbox" name="diet" value="Vegetarisch" class="w-4 h-4 accent-burgundy">
+                <span class="text-xs font-medium text-charcoal">Vegetarisch</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Nachricht & Musikwünsche -->
+          <div>
+            <label for="message" class="block text-xs uppercase tracking-wider text-charcoal/80 font-medium mb-1.5">Musikwünsche, Nachricht an uns</label>
             <textarea id="message" name="message" rows="4" placeholder="Liebe Anna, lieber Raphael..." class="w-full px-4 py-3 rounded-xl border border-dustyblue/50 focus:border-burgundy focus:outline-none text-xs bg-ivory/30"></textarea>
           </div>
 
@@ -852,7 +871,13 @@
         await fetch(RSVP_ENDPOINT, {
           method: 'POST',
           mode: 'no-cors',
-          body: new URLSearchParams(new FormData(form))
+          body: (() => {
+            const fd = new FormData(form);
+            const diet = fd.getAll('diet').join(', ');
+            fd.delete('diet');
+            fd.append('diet', diet);
+            return new URLSearchParams(fd);
+          })()
         });
       } catch (err) {
         ok = false;
