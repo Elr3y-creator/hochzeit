@@ -5,6 +5,20 @@
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anna & Raphael · Hochzeit in Bad Ischl · 3. April 2027</title>
+  <meta name="description" content="Wir laden euch zu unserer Hochzeit ein. 3. April 2027, Kaiservilla Bad Ischl.">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#5A1424">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://annaundraphael.at/">
+  <meta property="og:title" content="Anna & Raphael · 3. April 2027">
+  <meta property="og:description" content="Wir laden euch zu unserer Hochzeit ein. Kaiservilla Bad Ischl.">
+  <meta property="og:image" content="https://annaundraphael.at/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="de_AT">
+  <meta name="twitter:card" content="summary_large_image">
   
   <!-- Google Fonts: Pinyon Script (Kalligrafie), Cormorant Garamond (Imperial Serif), Inter (Clean Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -335,12 +349,12 @@
             </p>
             
             <div class="p-4 rounded-2xl bg-ivory/60 border border-dustyblue/30 mb-6 space-y-1.5 text-xs text-charcoal/80">
-              <p><strong class="text-burgundy font-medium">Adresse:</strong> Kalvarienbergweg 1, 4820 Bad Ischl</p>
+              <p><strong class="text-burgundy font-medium">Adresse:</strong> Kalvarienbergweg 27, 4820 Bad Ischl</p>
               <p><strong class="text-burgundy font-medium">Parken:</strong> vor der Kirche möglich, jedoch begrenzt.</p>
             </div>
           </div>
 
-          <a href="https://maps.google.com/?q=Kalvarienbergkirche+Bad+Ischl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full border border-burgundy text-burgundy hover:bg-burgundy hover:text-ivory text-xs uppercase tracking-widest font-medium transition-all">
+          <a href="https://maps.google.com/?q=Kalvarienbergweg+27,+4820+Bad+Ischl" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 w-full py-3 rounded-full border border-burgundy text-burgundy hover:bg-burgundy hover:text-ivory text-xs uppercase tracking-widest font-medium transition-all">
             <span>In Google Maps öffnen</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
@@ -613,6 +627,7 @@
             </div>
           </div>
 
+          <div id="attend-only" class="space-y-6">
           <!-- Anzahl Personen -->
           <div>
             <label for="adults" class="block text-xs uppercase tracking-wider text-charcoal/80 font-medium mb-1.5">Anzahl Erwachsene</label>
@@ -647,6 +662,8 @@
                 <span class="text-xs font-medium text-charcoal">Vegetarisch</span>
               </label>
             </div>
+          </div>
+
           </div>
 
           <!-- Nachricht & Musikwünsche -->
@@ -847,6 +864,16 @@
     }
 
     // 3. RSVP Formular Absenden & Modal Steuerung
+    // Bei Absage nur Name, E-Mail, Telefon und Nachricht zeigen
+    function updateAttendFields() {
+      const yes = document.querySelector('input[name="attendance"]:checked').value === 'ja';
+      const box = document.getElementById('attend-only');
+      box.classList.toggle('hidden', !yes);
+      box.querySelectorAll('input, select, textarea').forEach(el => el.disabled = !yes);
+    }
+    document.querySelectorAll('input[name="attendance"]').forEach(r => r.addEventListener('change', updateAttendFields));
+    document.getElementById('rsvp-form').addEventListener('reset', () => setTimeout(updateAttendFields, 0));
+
     // Google Apps Script Web-App URL hier eintragen (endet auf /exec)
     const RSVP_ENDPOINT = 'https://script.google.com/a/macros/fly---agency.com/s/AKfycbwOiezPryTm-Gwx_yQlRiXwMNC5_WHU2PvGncZ3vvDo79Clcrb0UUuSVY6M3gY_m15Q/exec';
 
